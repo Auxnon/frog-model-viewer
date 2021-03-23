@@ -1,0 +1,38 @@
+{
+  "name": "viewer",
+  "version": "0.0.1",
+  "description": "to view 3d stuff",
+  "main": "app.js",
+  "author": "makeavoy",
+  "license": "MIT",
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "electron": "^12.0.1",
+    "electron-builder": "^22.10.5",
+    "html-webpack-plugin": "^5.3.1",
+    "webpack": "^5.27.1",
+    "webpack-cli": "^4.5.0"
+  },
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.makavoy.viewer",
+    "mac": {
+      "category": "public.app-category.utilitiese"
+    },
+    "fileAssociations": [
+      {
+        "ext": [
+          "gltf",
+          "glb"
+        ],
+        "name": "GLTF File",
+        "description": "View gltf and glb",
+        "role": "Viewer"
+      }
+    ]
+  }
+}
