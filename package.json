@@ -23,6 +23,7 @@
     "mac": {
       "category": "public.app-category.utilitiese"
     },
+    "win": {},
     "fileAssociations": [
       {
         "ext": [
