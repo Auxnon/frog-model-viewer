@@ -20,8 +20,14 @@
   },
   "build": {
     "appId": "com.makavoy.viewer",
+    
     "mac": {
-      "category": "public.app-category.utilitiese"
+      "category": "public.app-category.utilitiese",
+      "icon": "./build/logo.png"
+    },
+    "win": {
+      "target": ["portable"],
+      "icon": "./build/logo.png"
     },
     "fileAssociations": [
       {
