@@ -12,7 +12,6 @@
 			position: absolute;
 			width: 100%;
 			height: 100%;
-
 		}
 		.canvas-holder,.overlay{
 			position: absolute;
@@ -22,11 +21,35 @@
 			left: 0;
 			top: 0;
 		}
+		button{
+			position: absolute;
+			min-width: 48px;
+			height: 48px;
+			border-radius: 24px;
+			background: #0C7FFF;
+			box-shadow: 1px 1px 6px #0005;
+		}
+		button:focus{
+			outline: none;
+		}
+		button.axis{
+			left: 50%;
+			top: 0;
+			transform: translate(-50%);
+		}
+		button.normalize{
+			left: 0;
+			top: 50%;
+			transform: translate(0,-50%);
+		}
 
 	</style>
 </head>
 <body>
 	<main></main>
-	<div class="overlay"></div>
+	<div class="overlay">
+		<button class="axis">Z</button>
+		<button class="normalize">Normalize</button>
+	</div>
 </body>
 </html>

@@ -7,6 +7,8 @@ let frog;
 let model;
 const fileReader = new FileReader();
 
+let zAxis=true;
+
 function init() {
     mainElement = document.querySelector('main');
 
@@ -36,16 +38,29 @@ function init() {
     Render.init(mainElement);
     Render.loadModel('assets/froggy.glb', m => {
         frog = m;
-        model = m.children[0];
-        Render.addModel(model)
-        window.model = model;
+        modelProcess(m)
     })
     resize();
     window.addEventListener('resize', resize);
     document.body.addEventListener("drop", dropItem);
     document.body.addEventListener("dragover", dragItemOver);
+    assignButton('.axis',ev=>{
+        zAxis=!zAxis
+        if(zAxis)
+            model.children[0].rotation.x=Math.PI/2;
+        else
+            model.children[0].rotation.x=0;
+    })
+
+
+
 }
 init();
+function assignButton(query,callback){
+    let element=document.querySelector(query);
+    if(element)
+        element.addEventListener('click',callback)
+}
 
 
 function resize() {
@@ -102,8 +117,21 @@ function dragItemOver(e) {
 }
 
 function modelProcess(m) {
-    model.position.z -= 10
-    model = m
+    if(model)
+        model.position.z -= 1
+    let box=Render.makeSizer(m)
+    //console.log( box.min, box.max, box.getSize() );
+    let vec=box.getSize()
+    let max=Math.max(Math.max(vec.x,vec.y),vec.z)
+    let inv=1/max;
+    
+    model = Render.makeGroup(m);
+    if(zAxis)
+            model.children[0].rotation.x=Math.PI/2;
+        else
+            model.children[0].rotation.x=0;
+    model.scale.set(inv,inv,inv)
+    //model.scale()
     Render.addModel(model)
 }
 

@@ -38,11 +38,11 @@ function init(dom, initialScene) {
     mainScene=new THREE.Scene();
 
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 5000);
-    camera.position.z = 0; //400
-    camera.position.y = -20; //-800
+    camera.position.z = 2; //400
+    camera.position.y = -2; //-800
     camera.up = new THREE.Vector3(0, 0, 1)
 
-    camera.lookAt(new THREE.Vector3(0, 100, 0));
+    camera.lookAt(new THREE.Vector3(0, 0, 0));
 
 
     alphaCanvas = document.createElement('div');
@@ -587,14 +587,24 @@ void main() {
 
 }
 
-function addModel(m){
-    mainScene.add(m)
+function addModel(model){
+    mainScene.add(model)
+}
+function makeGroup(model){
+    let group= new THREE.Group();
+    if(model)
+        group.add(model)
+    return group;
+
+}
+
+
+function makeSizer(model){
+    var box = new THREE.Box3().setFromObject( model );
+    return box
 }
 
 
 
 
-
-
-
-export { init, bufferPrint, addModel,loadModel,parseModel, specterMaterial, resize }
+export { init, bufferPrint, addModel,loadModel,parseModel,makeGroup,makeSizer, specterMaterial, resize }
