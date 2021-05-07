@@ -5,3 +5,5 @@
 - That's all it supports right now but i needed it
 - It has a cool frog
 - Click and drag works too, and file association!
+
+![image](https://user-images.githubusercontent.com/527951/117401595-de3f7d00-aed2-11eb-9c66-31c2801edbc0.png)
